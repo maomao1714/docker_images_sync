@@ -1,1 +1,2 @@
 deluan/navidrome:latest
+jellyfin/jellyfin:latest
