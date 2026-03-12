@@ -1,2 +1,3 @@
 deluan/navidrome:latest
 jellyfin/jellyfin:latest
+ghcr.io/openclaw/openclaw:latest
