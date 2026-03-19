@@ -4,3 +4,4 @@ ghcr.io/openclaw/openclaw:latest
 mariadb:10.5
 ghcr.io/laoning666/lyricflow:latest
 registry.cn-hangzhou.aliyuncs.com/sqdockler/simple_sq_music_plus:latest
+msmkls/daoliyu-music:latest
