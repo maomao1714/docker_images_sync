@@ -1,3 +1,7 @@
 deluan/navidrome:latest
 jellyfin/jellyfin:latest
 ghcr.io/openclaw/openclaw:latest
+MySQL mysql:5.7.44
+ghcr.io/laoning666/lyricflow:latest
+registry.cn-hangzhou.aliyuncs.com/sqdockler/simple_sq_music_plus:latest
+registry.cn-hangzhou.aliyuncs.com/sqdockler/simple_sq_music_plus_web:latest
