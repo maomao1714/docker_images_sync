@@ -1,5 +1,1 @@
-mysql:5.7
-simple_sq_music_plus:latest
-simple_sq_music_plus_web:latest
-laoning666:latest
-daoliyu-music:latest
+markcxx/coco-downloader:latest
