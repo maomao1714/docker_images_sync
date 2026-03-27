@@ -1,1 +1,1 @@
-coco-downloader:latest
+markcxx/coco-downloader:latest
