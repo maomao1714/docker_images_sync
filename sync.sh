@@ -21,9 +21,9 @@ fi
 failed_count=0
 failed_images=""
 while IFS= read -r image; do
-    # 拉取镜像（指定 amd64 平台）
+    # 拉取镜像（指定 arm64 平台）
     set +e
-    docker pull --platform linux/amd64 "$image"
+    docker pull --platform linux/arm64 "$image"
     pull_status=$?
     if [ $pull_status -ne 0 ]; then
         echo "Error: Failed to pull image $image, continuing..."
