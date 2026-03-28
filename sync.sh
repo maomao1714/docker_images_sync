@@ -14,7 +14,7 @@ TARGET_NAMESPACE=$3
 
 # 第二个目标仓库：Docker Hub（请修改为你的用户名和仓库名）
 DOCKERHUB_USER="maomao1714"
-DOCKERHUB_REPO="mao_hub"          # 你的 Docker Hub 仓库名
+DOCKERHUB_REPO="mao_hub"
 
 # 检查文件是否存在
 if [ ! -f "$IMAGES_FILE" ]; then
@@ -55,16 +55,17 @@ while IFS= read -r image; do
         continue
     fi
 
-    # --- 新增：推送到 Docker Hub ---
-    # Docker Hub 目标格式：用户名/仓库名:镜像名（如 maomao1714/mao_hub:deluan_navidrome）
-    targetFullName_dockerhub=${DOCKERHUB_USER}/${DOCKERHUB_REPO}:${name_for_aliyun}
+    # --- 推送到 Docker Hub ---
+    # 方案A：使用镜像名（如 deluan_navidrome）作为标签
+    dockerhub_tag=$(echo "$image" | sed 's/[\/:]\+/_/g' | tr '[:upper:]' '[:lower:]')
+    targetFullName_dockerhub=${DOCKERHUB_USER}/${DOCKERHUB_REPO}:${dockerhub_tag}
     docker tag "${image}" "${targetFullName_dockerhub}"
     docker push "${targetFullName_dockerhub}"
-    push_docker_status=$?
-    if [ $push_docker_status -ne 0 ]; then
-        echo "Warning: Failed to push image $targetFullName_dockerhub to Docker Hub, continuing..."
-        # 只警告，不增加失败计数，避免因为 Docker Hub 问题中断整个流程
-    fi
+    # 如果希望使用方案B（仅保留原始标签），将上面的三行替换为：
+    # tag=$(echo "$base_name" | cut -d ':' -f2)
+    # targetFullName_dockerhub=${DOCKERHUB_USER}/${DOCKERHUB_REPO}:${tag}
+    # docker tag "${image}" "${targetFullName_dockerhub}"
+    # docker push "${targetFullName_dockerhub}"
     # -----------------------------
 
 done < "$IMAGES_FILE"
