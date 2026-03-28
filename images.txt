@@ -1,1 +1,1 @@
-Navidrome:latest
+navidrome:latest
