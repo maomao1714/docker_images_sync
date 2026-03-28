@@ -1,1 +1,1 @@
-navidrome:latest
+deluan/navidrome:latest
