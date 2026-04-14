@@ -7,7 +7,7 @@ on:
       - 'sync.sh'
       - '.github/workflows/sync-images.yml'
   schedule:
-    - cron: '0 14 * * *'   # 每天 UTC 2:00 运行
+    - cron: '0 14 * * *'   # 每天 UTC 14:00 运行
   workflow_dispatch:       # 允许手动触发
 
 jobs:
