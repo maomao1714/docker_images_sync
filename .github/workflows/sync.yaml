@@ -7,7 +7,7 @@ on:
       - 'sync.sh'
       - '.github/workflows/sync.yaml'
   schedule:
-    - cron: '0 14 * * *'   # 每天 UTC 14:00（北京时间 22:00）
+    - cron: '10 14 * * *'   # 每天 UTC 14:00（北京时间 22:00）
   workflow_dispatch:
 
 jobs:
