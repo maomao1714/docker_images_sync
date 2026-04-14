@@ -5,10 +5,10 @@ on:
     paths:
       - 'images.txt'
       - 'sync.sh'
-      - '.github/workflows/sync-images.yml'
+      - '.github/workflows/sync.yaml'
   schedule:
-    - cron: '0 14 * * *'   # 每天 UTC 14:00 运行
-  workflow_dispatch:       # 允许手动触发
+    - cron: '0 14 * * *'   # 每天 UTC 14:00（北京时间 22:00）
+  workflow_dispatch:
 
 jobs:
   sync:
@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          cleanup: false   # 防止 post-job 卡住
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
