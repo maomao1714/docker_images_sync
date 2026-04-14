@@ -59,7 +59,6 @@ while IFS= read -r image; do
         echo "❌ 阿里云推送失败"
         failed_count=$((failed_count + 1))
         failed_images="${failed_images} ${image}"
-        # 即使阿里云失败，继续尝试推送 Docker Hub
     fi
 
     # ---------- 3. 推送到 Docker Hub ----------
@@ -90,45 +89,4 @@ if [ $failed_count -gt 0 ]; then
     echo "❌ 失败镜像列表: $failed_images"
     exit 1
 fi
-echo "✅ 所有镜像处理成功。"            echo "✅ Docker Hub 镜像已存在且 digest 相同，跳过推送: $target_dockerhub"
-        else
-            echo "🔄 Docker Hub 镜像存在但 digest 不同，将更新推送: $target_dockerhub"
-            push_dockerhub=true
-        fi
-    else
-        echo "➕ Docker Hub 镜像不存在，将首次推送: $target_dockerhub"
-        push_dockerhub=true
-    fi
-
-    # 执行 Docker Hub 推送
-    if [ "$push_dockerhub" = true ]; then
-        docker tag "$image" "$target_dockerhub"
-        if docker push "$target_dockerhub"; then
-            echo "✅ Docker Hub 推送成功"
-        else
-            echo "❌ 错误：Docker Hub 推送失败"
-            failed_count=$((failed_count + 1))
-            failed_images="${failed_images} ${image}"
-        fi
-    fi
-
-    # ---------- 7. 清理本地镜像以节省空间 ----------
-    docker rmi "$image" "$target_aliyun" "$target_dockerhub" > /dev/null 2>&1 || true
-
-    if [ "$push_aliyun" = false ] && [ "$push_dockerhub" = false ]; then
-        skipped_count=$((skipped_count + 1))
-    fi
-
-done < "$IMAGES_FILE"
-
-# ---------- 最终报告 ----------
-echo "=========================================="
-echo "同步任务完成。"
-echo "处理镜像总数: $total_images"
-echo "完全跳过（两边均已存在）: $skipped_count"
-echo "失败镜像数: $failed_count"
-if [ $failed_count -gt 0 ]; then
-    echo "失败镜像列表: $failed_images"
-    exit 1
-fi
-echo "所有镜像处理成功。"
+echo "✅ 所有镜像处理成功。"
