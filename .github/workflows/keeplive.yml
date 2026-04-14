@@ -1,0 +1,18 @@
+# 文件名: .github/workflows/keepalive.yml
+name: Keep Scheduled Workflows Alive
+
+on:
+  schedule:
+    # 每月1号 UTC 0点运行一次，频率足够
+    - cron: '0 0 1 * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  keepalive:
+    name: Keep Alive
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write # 此权限允许它操作Actions
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/keepalive-workflow@v2
