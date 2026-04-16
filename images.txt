@@ -1,2 +1,3 @@
 deluan/navidrome:latest
 ghcr.io/xcq0607/lxserver:latest
+nousresearch/hermes-agent:latest
