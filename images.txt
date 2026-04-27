@@ -1,4 +1,4 @@
 deluan/navidrome:latest
 ghcr.io/xcq0607/lxserver:latest
 cqshushu/iptv-spider:latest
-geelonn/melodyhub:latest
+hanxi/mimusic:full
