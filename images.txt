@@ -3,3 +3,4 @@ ghcr.io/xcq0607/lxserver:latest
 cqshushu/iptv-spider:latest
 hanxi/mimusic:full
 gdy666/lucky:latest
+iptvtop/uhdiptv
