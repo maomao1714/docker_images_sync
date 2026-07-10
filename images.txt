@@ -2,6 +2,6 @@ deluan/navidrome:latest
 ghcr.io/xcq0607/lxserver:latest
 cqshushu/iptv-spider:latest
 hanxi/mimusic:full
-songloft:latest
+hanxi/songloft:latest
 gdy666/lucky:latest
 iptvtop/uhdiptv
