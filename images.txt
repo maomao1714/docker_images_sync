@@ -6,3 +6,4 @@ songloft/songloft:latest
 gdy666/lucky:latest
 iptvtop/uhdiptv
 haoxuan8855/openlist:arm64
+openlistteam/openlist:latest
