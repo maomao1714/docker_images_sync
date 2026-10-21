@@ -2,6 +2,6 @@ deluan/navidrome:latest
 ghcr.io/xcq0607/lxserver:latest
 cqshushu/iptv-spider:latest
 songloft/songloft:latest
-gdy666/lucky:latest
+gdy666/lucky:v3
 iptvtop/uhdiptv
 openlistteam/openlist:latest
